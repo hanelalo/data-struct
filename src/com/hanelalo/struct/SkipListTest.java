@@ -1,4 +1,4 @@
-package com.hanelalo.linked;
+package com.hanelalo.struct;
 
 public class SkipListTest {
 
