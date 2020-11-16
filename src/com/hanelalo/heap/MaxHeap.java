@@ -1,4 +1,4 @@
-package com.hanelalo.sort;
+package com.hanelalo.heap;
 
 import java.util.Arrays;
 

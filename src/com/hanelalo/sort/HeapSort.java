@@ -1,6 +1,8 @@
 package com.hanelalo.sort;
 
-public class HeapTest {
+import com.hanelalo.heap.MaxHeap;
+
+public class HeapSort {
 
   public static void main(String[] args) {
     MaxHeap maxHeap = new MaxHeap(10);

@@ -1,4 +1,4 @@
-package com.hanelalo.sort;
+package com.hanelalo.heap;
 
 /**
  * Top 20 of 1000 TopK 问题 维护一个小顶堆，比堆顶大，删除堆顶元素，加入新元素，比堆顶小，不做处理
