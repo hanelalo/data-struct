@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/** 8 皇后问题 */
+/** 8 皇后问题 给定一个 N×N 的棋盘和 N 个皇后，每个棋子可以攻击其所在列、所在行、左上、左下、右上、右下的棋子，
+ * 问怎么排列这 N 个皇后，才不会让他们相互攻击？ */
 public class NQueens {
 
   public static void main(String[] args) {
@@ -14,10 +15,10 @@ public class NQueens {
     List<String[]> backtrack = new ArrayList<>();
     solutionNQueens(chessboard, backtrack, 0);
     System.out.println(backtrack.size());
-//    for (String[] backtrackItem : backtrack) {
-//      Arrays.stream(backtrackItem).forEach(System.out::println);
-//      System.out.println("--------------------------------");
-//    }
+        for (String[] backtrackItem : backtrack) {
+          Arrays.stream(backtrackItem).forEach(System.out::println);
+          System.out.println("--------------------------------");
+        }
   }
 
   private static void solutionNQueens(String[] chessboard, List<String[]> backtrack, int row) {
@@ -52,19 +53,31 @@ public class NQueens {
     if (Arrays.stream(chessboard).anyMatch(chessboardItem -> chessboardItem.charAt(col) == 'Q')) {
       return true;
     }
-    if (col - 1 >= 0 && row - 1 >= 0 && chessboard[row - 1].charAt(col - 1) == 'Q') {
-      return true;
+    // 左上
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+      if (chessboard[i].charAt(j) == 'Q') {
+        return true;
+      }
     }
-    if (col + 1 < chessboard.length
-        && row - 1 >= 0
-        && chessboard[row - 1].charAt(col + 1) == 'Q') {
-      return true;
+    // 右上
+    for (int i = row - 1, j = col + 1; i >= 0 && j < chessboard.length; i--, j++) {
+      if (chessboard[i].charAt(j) == 'Q') {
+        return true;
+      }
     }
-    if (col - 1 >= 0 && row + 1 < chessboard.length && chessboard[row + 1].charAt(col - 1) == 'Q') {
-      return true;
+    // 左下
+    for (int i = row + 1, j = col - 1; i < chessboard.length && j >= 0; i++, j--) {
+      if (chessboard[i].charAt(j) == 'Q') {
+        return true;
+      }
     }
-    return col + 1 < chessboard.length
-        && row + 1 < chessboard.length
-        && chessboard[row + 1].charAt(col + 1) == 'Q';
+
+    // 右下
+    for (int i = row + 1, j = col + 1; i < chessboard.length && j < chessboard.length; i++, j++) {
+      if (chessboard[i].charAt(j) == 'Q') {
+        return true;
+      }
+    }
+    return false;
   }
 }
