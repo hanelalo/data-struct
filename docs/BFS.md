@@ -10,7 +10,7 @@
 
 ```
 int bfs(Node start, Node target){
-    // 核心数据结果哦u
+    // 核心数据结构
     Queue<Node> q;
     // 走过的路径记录，防止走回头路
     Set<Node> visited;
