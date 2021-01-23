@@ -1,5 +1,8 @@
 package com.hanelalo.dynamicprogram;
 
+/**
+ * 最长湍流子序列
+ */
 public class MaxTurbulenceSize {
 
   public static void main(String[] args) {
