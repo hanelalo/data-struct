@@ -6,7 +6,7 @@ import java.util.Map;
 /** 编辑距离 字符串 A 和字符串 B, 在只能做插入一个字符、删除一个字符、替换一个字符三种操作的情况下， 将 A 编辑为 B 需要多少次操作 */
 public class MinEditInstance {
 
-  private static Map<String, Integer> map = new HashMap<>();
+  private static final Map<String, Integer> MAP = new HashMap<>();
 
   public static void main(String[] args) {
     String str1 = "radsadasdfsdfsdfsddafjhvj";
@@ -43,8 +43,8 @@ public class MinEditInstance {
   }
 
   private static int dp(String[] str1, String[] str2, int i, int j) {
-    if(map.containsKey(i+"-"+"j")){
-      return map.get(i + "-" + j);
+    if(MAP.containsKey(i+"-"+"j")){
+      return MAP.get(i + "-" + j);
     }
     if (i == -1) {
       return j + 1;
@@ -52,7 +52,7 @@ public class MinEditInstance {
     if (j == -1) {
       return i + 1;
     }
-    int result = 0;
+    int result;
     if(str1[i].equals(str2[j])){
       result = dp(str1, str2, i - 1, j - 1);
     } else {
@@ -61,7 +61,7 @@ public class MinEditInstance {
               Math.min(dp(str1, str2, i - 1, j) + 1, dp(str1, str2, i, j - 1) + 1),
               dp(str1, str2, i - 1, j - 1) + 1);
     }
-    map.put(i + "-" + j, result);
+    MAP.put(i + "-" + j, result);
     return result;
   }
 }
